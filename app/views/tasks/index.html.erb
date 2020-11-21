@@ -1,0 +1,21 @@
+<h1>All Tasks</h1>
+
+<% @tasks.each do |task| %>
+  <h3><a href="/tasks/<%= task.id %>"><%= task.title %></a></h3>
+
+  <p><%= task.description %></p>
+  <a href="/tasks/<%= task.id  %>/edit">Edit</a>
+  <form action="/tasks/<%= task.id %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="delete"/>
+  </form>
+<% end %> 
+
+<! -- 
+  HTML forms do not support PUT, PATCH or DELETE actions. 
+  So, when defining PUT, PATCH or DELETE routes that are called from an HTML form, 
+  you will need to add a hidden _method field to the form. 
+  The value sent with the _method field will be used as the HTTP request method:
+  If you're using only POST or GET routes, you won't need it. 
+--> 
