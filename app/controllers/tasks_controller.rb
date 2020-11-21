@@ -4,7 +4,7 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
-  def easteregg
+  def eastereggs
   end
 
   def new
